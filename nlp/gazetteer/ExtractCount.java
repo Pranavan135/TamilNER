@@ -3,7 +3,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *                                                                             * 
  * Named Entity Recognition system is used to identify the names of person,    *
- * names of location, names of organization, names of times and numeric        *
+ * names of location, names of organization, time expressions and numeric      *
  * expression in Tamil text.                                                   *
  *                                                                             *
  *  Copyright (C) 2015-2016  University of Moratuwa                            *
@@ -12,13 +12,6 @@
  * it under the terms of the GNU General Public License as published by        *
  * the Free Software Foundation, either version 3 of the License, or           *
  * (at your option) any later version.                                         *
- *                                                                             *
- *                                                                             *
- * This program is free software: you can redistribute it and/or modify        *
- * it under the terms of the GNU General Public License as published by        *
- * the Free Software Foundation, either version 3 of the License, or           *
- * (at your option) any later version.                                         *
- *                                                                             * 
  *                                                                             *
  * This program is distributed in the hope that it will be useful,             *
  * but WITHOUT ANY WARRANTY; without even the implied warranty of              *
@@ -46,6 +39,10 @@ import java.util.Scanner;
 public class ExtractCount {
     private static List<String> count = new ArrayList<>();
 
+    /**
+     * get Count patterns
+     * @throws IOException 
+     */
     public static void extract() throws IOException {
         Scanner scanner = new Scanner(new File("resources/CountList.txt"));
 
@@ -59,7 +56,12 @@ public class ExtractCount {
         scanner.close();
     }
 
-    public static boolean place(String place){
-        return count.contains(place);
+    /**
+     * check whether count is in the list
+     * @param count
+     * @return 
+     */
+    public static boolean count(String count){
+        return count.contains(count);
     }
 }

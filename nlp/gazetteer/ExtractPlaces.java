@@ -3,7 +3,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *                                                                             * 
  * Named Entity Recognition system is used to identify the names of person,    *
- * names of location, names of organization, names of times and numeric        *
+ * names of location, names of organization, time expressions and numeric      *
  * expression in Tamil text.                                                   *
  *                                                                             *
  *  Copyright (C) 2015-2016  University of Moratuwa                            *
@@ -12,13 +12,6 @@
  * it under the terms of the GNU General Public License as published by        *
  * the Free Software Foundation, either version 3 of the License, or           *
  * (at your option) any later version.                                         *
- *                                                                             *
- *                                                                             *
- * This program is free software: you can redistribute it and/or modify        *
- * it under the terms of the GNU General Public License as published by        *
- * the Free Software Foundation, either version 3 of the License, or           *
- * (at your option) any later version.                                         *
- *                                                                             * 
  *                                                                             *
  * This program is distributed in the hope that it will be useful,             *
  * but WITHOUT ANY WARRANTY; without even the implied warranty of              *
@@ -46,6 +39,10 @@ import java.util.Scanner;
 public class ExtractPlaces {
     private static final List<String> places = new ArrayList<>();
 
+    /**
+     * get common places
+     * @throws IOException 
+     */
     public static void extract() throws IOException{
         try (Scanner scanner = new Scanner(new File("resources/PlaceList.txt"))) {
             String line;
@@ -57,6 +54,11 @@ public class ExtractPlaces {
         }
     }
 
+    /**
+     * whether place is in the list or not
+     * @param place
+     * @return 
+     */
     public static boolean place(String place){
         return places.contains(place);
     }

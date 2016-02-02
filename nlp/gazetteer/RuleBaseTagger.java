@@ -3,7 +3,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *                                                                             * 
  * Named Entity Recognition system is used to identify the names of person,    *
- * names of location, names of organization, names of times and numeric        *
+ * names of location, names of organization, time expressions and numeric      *
  * expression in Tamil text.                                                   *
  *                                                                             *
  *  Copyright (C) 2015-2016  University of Moratuwa                            *
@@ -12,13 +12,6 @@
  * it under the terms of the GNU General Public License as published by        *
  * the Free Software Foundation, either version 3 of the License, or           *
  * (at your option) any later version.                                         *
- *                                                                             *
- *                                                                             *
- * This program is free software: you can redistribute it and/or modify        *
- * it under the terms of the GNU General Public License as published by        *
- * the Free Software Foundation, either version 3 of the License, or           *
- * (at your option) any later version.                                         *
- *                                                                             * 
  *                                                                             *
  * This program is distributed in the hope that it will be useful,             *
  * but WITHOUT ANY WARRANTY; without even the implied warranty of              *
@@ -48,6 +41,12 @@ public class RuleBaseTagger {
     private static PersonSureFireRules personSureFireRules = PersonSureFireRules.getPersonSureFireRules();
     private static OrganizationSureFireRules organizationSureFireRules = OrganizationSureFireRules.getOrganizationSureFireRules();
 
+    /**
+     * tag the input list with Gazetteer features
+     * @param wordList
+     * @return
+     * @throws IOException 
+     */
     public static List<String> tagList(List<String> wordList) throws IOException {
         ExtractNames.extract();
         ExtractPlaces.extract();
@@ -95,6 +94,11 @@ public class RuleBaseTagger {
         return retList;
     }
 
+    /**
+     * sample main method to show the functionality
+     * @param args
+     * @throws IOException 
+     */
     public static void main(String[] args) throws IOException {
 
         BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("resources/word.txt")));
@@ -117,6 +121,11 @@ public class RuleBaseTagger {
 
     }
 
+    /**
+     * check whether word contains only digits or not
+     * @param word
+     * @return 
+     */
     private static boolean digit(String word) {
         for (int i = 0; i < word.length(); i++) {
             if (!Character.isDigit(word.charAt(i))) {

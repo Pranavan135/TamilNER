@@ -1,4 +1,5 @@
 
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *                                                                             * 
@@ -83,30 +84,12 @@ public class PrecisionRecallCalc {
         System.out.println("Recall : " + recall);
     }
 
-    public static void main(String[] args) throws IOException {
-        List<String> l1 = new ArrayList<>();
-        List<String> l2 = new ArrayList<>();
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("test3.txt")));
 
-        String line = bufferedReader.readLine();
-
-        while (line != null) {
-            // System.out.println(line);
-            String[] parts = line.split("\\s+");
-
-            if (parts.length > 1) {
-                l1.add(parts[0]);
-                l2.add(parts[1]);
-            }
-
-            line = bufferedReader.readLine();
-
-        }
-
-        compute(l1, l2);
-
-    }
-
+    /**
+     * calculate precision and recall NE wise
+     * @param l1
+     * @param l2 
+     */
     public static void compute(List<String> l1, List<String> l2) {
         for (int i = 0; i < NE.length; i++) {
             calc(l1, l2, NE[i]);

@@ -3,7 +3,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *                                                                             * 
  * Named Entity Recognition system is used to identify the names of person,    *
- * names of location, names of organization, names of times and numeric        *
+ * names of location, names of organization, time expressions and numeric      *
  * expression in Tamil text.                                                   *
  *                                                                             *
  *  Copyright (C) 2015-2016  University of Moratuwa                            *
@@ -12,13 +12,6 @@
  * it under the terms of the GNU General Public License as published by        *
  * the Free Software Foundation, either version 3 of the License, or           *
  * (at your option) any later version.                                         *
- *                                                                             *
- *                                                                             *
- * This program is free software: you can redistribute it and/or modify        *
- * it under the terms of the GNU General Public License as published by        *
- * the Free Software Foundation, either version 3 of the License, or           *
- * (at your option) any later version.                                         *
- *                                                                             * 
  *                                                                             *
  * This program is distributed in the hope that it will be useful,             *
  * but WITHOUT ANY WARRANTY; without even the implied warranty of              *
@@ -46,6 +39,10 @@ public class ExtractNames {
     private static final Hashtable<String,String> lastName = new Hashtable<>();
 
 
+    /**
+     * get Name patterns
+     * @throws IOException 
+     */
     public static void extract() throws IOException{
         try (Scanner scanner = new Scanner(new File("resources/NameList.txt"))) {
             String line;
@@ -66,8 +63,13 @@ public class ExtractNames {
         }
     }
 
-    public static boolean person(String word){
-        return firstName.get(word) != null || lastName.get(word) != null;
+    /**
+     * check whether name is in first name table or last name table
+     * @param name
+     * @return 
+     */
+    public static boolean person(String name){
+        return firstName.get(name) != null || lastName.get(name) != null;
     }
 
 }

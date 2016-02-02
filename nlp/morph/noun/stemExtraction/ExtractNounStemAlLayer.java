@@ -3,7 +3,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *                                                                             * 
  * Named Entity Recognition system is used to identify the names of person,    *
- * names of location, names of organization, names of times and numeric        *
+ * names of location, names of organization, time expressions and numeric      *
  * expression in Tamil text.                                                   *
  *                                                                             *
  *  Copyright (C) 2015-2016  University of Moratuwa                            *
